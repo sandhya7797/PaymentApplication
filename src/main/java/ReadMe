@@ -1,0 +1,30 @@
+Payment Flow -
+
+1. User -> Order Service.
+   Order is created.
+
+2. User -> Payment Service.
+   Gets order id from Order Service.
+   Payment Link is created.
+
+3. User -> Payment Link.
+   Payment is done.
+   user gets redirected to callback url.
+
+4. Payment Gateway -> Payment Service (callback url).
+   i. it lets payment service know that the user has completed the payment.
+   ii. it initiates payment status check with the payment gateway. (successful, failed, pending)
+
+   In Parallel,
+
+5. Payment Gateway -> Payment Service. (separate communication channel that the payment gateway uses to notify about payment status to your payment service)
+   Webhook URL.
+
+
+API list to be created in Payment Service -
+
+1. createPaymentLink.
+2. getPaymentStatus. (User initiated)
+3. getPaymentStatusWebhook. (server initiated)
+
+
